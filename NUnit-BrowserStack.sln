@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30309.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnit-BrowserStack", "NUnit-BrowserStack\NUnit-BrowserStack.csproj", "{D309DDB3-1E3B-428B-B00B-1257F2532079}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PulseAutomation", "NUnit-BrowserStack\PulseAutomation.csproj", "{D309DDB3-1E3B-428B-B00B-1257F2532079}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +18,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {980E2C8D-7320-48D2-B69F-4AE0CD062107}
 	EndGlobalSection
 EndGlobal
