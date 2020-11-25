@@ -7,13 +7,14 @@ namespace BrowserStack
     //[TestFixture("firefox")]
     //[TestFixture("safari")]
     [TestFixture("ie")]
+    [TestFixture("local")]
     [Parallelizable(ParallelScope.Fixtures)]
-    public class SecondExample : BrowserStackNUnitTest
+    public class Activations : BrowserStackNUnitTest
     {
-        public SecondExample(string environment) : base(environment) { }
+        public Activations(string environment) : base(environment) { }
 
         [Test]
-        public void SearchGoogleSecond()
+        public void SearchGoogle()
         {
             driver.Navigate().GoToUrl("https://www.google.com/ncr");
             IWebElement query = driver.FindElement(By.Name("q"));
@@ -24,7 +25,7 @@ namespace BrowserStack
         }
 
         [Test]
-        public void SearchJeevesSecond()
+        public void SearchJeeves()
         {
             driver.Navigate().GoToUrl("https://uk.ask.com/");
             IWebElement query = driver.FindElement(By.Name("q"));

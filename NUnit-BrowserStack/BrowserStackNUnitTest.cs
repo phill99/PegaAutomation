@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
 using System;
 using System.Collections.Generic;
@@ -20,16 +21,29 @@ namespace BrowserStack
         private Local browserStackLocal;
         private string sessionID;
         private DateTime runDateTime;
+        private bool local = false;
         
         public BrowserStackNUnitTest(string environment)
         {
-            this.environment = environment;
+            if (environment == "local")
+                local = true;
+            else
+                this.environment = environment;
+
             runDateTime = DateTime.Now;
         }
         
         [SetUp]
         public void Init()
         {
+            //Local uses ChromeDriver installed on your PC - can run tests on browserstack or on your machine as required
+            if (local)
+            {
+                driver = new ChromeDriver();
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+                return;
+            }
+
             NameValueCollection settings = ConfigurationManager.GetSection("environments/" + environment) as NameValueCollection;
             
             DesiredCapabilities capability = new DesiredCapabilities();
@@ -73,6 +87,7 @@ namespace BrowserStack
             }
             
             driver = new RemoteWebDriver(new Uri("http://"+ ConfigurationManager.AppSettings.Get("server") +"/wd/hub/"), capability);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
             //grab session ID from driver if possible, use this to update status
             sessionID = "";
@@ -82,16 +97,20 @@ namespace BrowserStack
         [TearDown]
         public void Cleanup()
         {
-            if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
+            if(!local)
             {
-                UpdateTestStatus(false, TestContext.CurrentContext.Result.Message);
-            }
-            else if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Passed)
-            {
-                UpdateTestStatus(true);
+                if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
+                {
+                    UpdateTestStatus(false, TestContext.CurrentContext.Result.Message);
+                }
+                else if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Passed)
+                {
+                    UpdateTestStatus(true);
+                }
             }
 
             driver.Quit();
+
             if (browserStackLocal != null)
                 browserStackLocal.stop();
         }
