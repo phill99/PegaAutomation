@@ -4,20 +4,23 @@ using SingleTest.Helpers;
 namespace BrowserStack
 {
     [TestFixture("chrome")]
-    //[TestFixture("firefox")]
+    [TestFixture("firefox")]
     //[TestFixture("safari")]
-    [TestFixture("ie")]
+    //[TestFixture("ie")]
     [TestFixture("local")]
     [Parallelizable(ParallelScope.Fixtures)]
     public class BasicSelfService : BrowserStackNUnitTest
     {
+        //string SSStartURL = "https://dev-advice.stepchange.org/prweb/IAC/app/DeoneroRELEASE_2277/p9l0jRy_bbPe52cNke6ey9xgo-caCc3k*/!DeoneroRELEASE/$DNDA10?pyActivity=%40baseclass.MashupController&pzSkinName=FCCCore&ApplicationName=Deonero&Cls=4&isWebMashup=true";
+        string SSStartURL = "https://test-advice.stepchange.org/prweb/IAC/app/DeoneroRELEASE_2277/p9l0jRy_bbPe52cNke6ey9xgo-caCc3k*/!DeoneroRELEASE/$DNDA10?pyActivity=%40baseclass.MashupController&pzSkinName=FCCCore&ApplicationName=Deonero&Cls=4&isWebMashup=true";
+
         public BasicSelfService(string environment) : base(environment) { }
 
         [Test]
         public void StartToDashboard()
         {
             //Go to Dev URL
-            driver.Url = "https://stpchn-digtrf-dt2.pegacloud.net/prweb/IAC/app/DeoneroRELEASE_1122/p9l0jRy_bbPe52cNke6ey9xgo-caCc3k*/!DeoneroRELEASE/$DNDA10?pzuiactionzzz=CXtpbn1COVB1R2tZUjk1OEhvY2lkaGkrUnNrY3NFWDd2bDJXZUxuV2IrNWxsNWV3a1U3N21DNDhyeUxlc1hOb0tQbnkyZ2NGOGxXTUNRa0xLSWNuNXF2em1qUG4vTXhVQjdyWlVjN0ZDakFlWkFKd29mU3REaTdKbXZGMXlidUlDejdKaFNBc2ZFbHRnNWdnUDhIOU85Rmc5VFE9PQ%3D%3D*";
+            driver.Url = SSStartURL;
 
             CaptureHelpers _CaptureHelper = new CaptureHelpers(driver);
 
@@ -35,7 +38,7 @@ namespace BrowserStack
         public void SelfEmployedNotEligible()
         {
             //Go to Dev URL
-            driver.Url = "https://stpchn-digtrf-dt2.pegacloud.net/prweb/IAC/app/DeoneroRELEASE_1122/p9l0jRy_bbPe52cNke6ey9xgo-caCc3k*/!DeoneroRELEASE/$DNDA10?pzuiactionzzz=CXtpbn1COVB1R2tZUjk1OEhvY2lkaGkrUnNrY3NFWDd2bDJXZUxuV2IrNWxsNWV3a1U3N21DNDhyeUxlc1hOb0tQbnkyZ2NGOGxXTUNRa0xLSWNuNXF2em1qUG4vTXhVQjdyWlVjN0ZDakFlWkFKd29mU3REaTdKbXZGMXlidUlDejdKaFNBc2ZFbHRnNWdnUDhIOU85Rmc5VFE9PQ%3D%3D*";
+            driver.Url = SSStartURL;
 
             CaptureHelpers _CaptureHelper = new CaptureHelpers(driver);
 

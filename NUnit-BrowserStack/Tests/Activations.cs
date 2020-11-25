@@ -4,9 +4,9 @@ using OpenQA.Selenium;
 namespace BrowserStack
 {
     [TestFixture("chrome")]
-    //[TestFixture("firefox")]
+    [TestFixture("firefox")]
     //[TestFixture("safari")]
-    [TestFixture("ie")]
+    //[TestFixture("ie")]
     [TestFixture("local")]
     [Parallelizable(ParallelScope.Fixtures)]
     public class Activations : BrowserStackNUnitTest

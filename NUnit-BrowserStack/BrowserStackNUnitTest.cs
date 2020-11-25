@@ -22,7 +22,9 @@ namespace BrowserStack
         private string sessionID;
         private DateTime runDateTime;
         private bool local = false;
-        
+        string username = "";
+        string accesskey = "";
+
         public BrowserStackNUnitTest(string environment)
         {
             if (environment == "local")
@@ -63,12 +65,14 @@ namespace BrowserStack
             //CUSTOM - debug
             capability.SetCapability("browserstack.debug", true);
 
-            string username = Environment.GetEnvironmentVariable("BROWSERSTACK_USERNAME");
+            capability.SetCapability("project", "Pulse");
+
+            username = Environment.GetEnvironmentVariable("BROWSERSTACK_USERNAME");
             
             if(username == null)
                 username = ConfigurationManager.AppSettings.Get("user");
             
-            string accesskey = Environment.GetEnvironmentVariable("BROWSERSTACK_ACCESS_KEY");
+            accesskey = Environment.GetEnvironmentVariable("BROWSERSTACK_ACCESS_KEY");
             
             if (accesskey == null)
                 accesskey = ConfigurationManager.AppSettings.Get("key");
@@ -139,7 +143,7 @@ namespace BrowserStack
                 myWebRequest.ContentLength = requestData.Length;
                 using (Stream st = myWebRequest.GetRequestStream()) st.Write(requestData, 0, requestData.Length);
 
-                NetworkCredential myNetworkCredential = new NetworkCredential("philjones13", "uwfpP99tRmjseyP7U1gp");
+                NetworkCredential myNetworkCredential = new NetworkCredential(username, accesskey);
                 CredentialCache myCredentialCache = new CredentialCache();
                 myCredentialCache.Add(myUri, "Basic", myNetworkCredential);
                 myHttpWebRequest.PreAuthenticate = true;
