@@ -1,6 +1,6 @@
-# nunit-browserstack
+# nUnit-BrowserStack custom
 
-Customisaiton of the nunit-browserstack template to work with Pega implementation at StepChange.
+Customisation of the nunit-browserstack template to work with Pega implementation at StepChange.
 
 ## Additional Resources
 * [Documentation for writing automate test scripts in C#](https://www.browserstack.com/automate/c-sharp)
