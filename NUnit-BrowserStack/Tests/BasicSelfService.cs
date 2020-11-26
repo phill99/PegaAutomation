@@ -27,7 +27,7 @@ namespace BrowserStack
             AboutYou _aboutYou = new AboutYou(_CaptureHelper);
             _aboutYou.ValidateTitle();
             _aboutYou.CaptureData();
-            _aboutYou.ClickSubmit();
+            _aboutYou.Submit();
 
             AccountRegistration _accountRegistration = new AccountRegistration(_CaptureHelper);
             _accountRegistration.ValidateTitle();
@@ -45,7 +45,7 @@ namespace BrowserStack
             AboutYou _aboutYou = new AboutYou(_CaptureHelper);
             _aboutYou.ValidateTitle();
             _aboutYou.CaptureData(2);
-            _aboutYou.ClickSubmit();
+            _aboutYou.Submit();
 
             NotEligible _notEligible = new NotEligible(_CaptureHelper);
             _notEligible.ValidateTitle();

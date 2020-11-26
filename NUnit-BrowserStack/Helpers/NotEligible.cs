@@ -2,19 +2,26 @@
 
 namespace SingleTest.Helpers
 {
-    internal class NotEligible
+    internal class NotEligible : Screen
     {
-        CaptureHelpers _captureHelpers;
-
-        internal NotEligible(CaptureHelpers captureHelpers)
+        internal NotEligible(CaptureHelpers captureHelpers) : base (captureHelpers)
         {
-            _captureHelpers = captureHelpers;
         }
 
-        internal void ValidateTitle()
+        override public void ValidateTitle()
         {
-            string _pageTitle = _captureHelpers.GrabTextFromElement("202002261824380516574");
+            string _pageTitle = CaptureHelper.GrabTextFromElement("202002261824380516574");
             Assert.IsTrue(_pageTitle.StartsWith("Sorry, we can't help right now"));
+        }
+
+        public override void CaptureData(int value = 1)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Submit()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

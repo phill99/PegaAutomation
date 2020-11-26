@@ -108,6 +108,7 @@
     <Compile Include="Helpers\AboutYou.cs" />
     <Compile Include="Helpers\AccountRegistration.cs" />
     <Compile Include="Helpers\Helpers.cs" />
+    <Compile Include="Helpers\Screen.cs" />
     <Compile Include="Helpers\NotEligible.cs" />
     <Compile Include="Tests\Activations.cs" />
     <Compile Include="Tests\BasicSelfService.cs" />
