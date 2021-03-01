@@ -23,5 +23,10 @@ namespace SingleTest.Helpers
         {
             throw new System.NotImplementedException();
         }
+
+        public override void ValidateAccessibility()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

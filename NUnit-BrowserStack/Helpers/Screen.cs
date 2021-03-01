@@ -16,6 +16,11 @@ namespace SingleTest.Helpers
         public CaptureHelpers CaptureHelper { get; set; }
 
         /// <summary>
+        /// Validate accessibility of the screen you're on
+        /// </summary>
+        abstract public void ValidateAccessibility();
+
+        /// <summary>
         /// Validate the title of the screen you're on
         /// </summary>
         abstract public void ValidateTitle();

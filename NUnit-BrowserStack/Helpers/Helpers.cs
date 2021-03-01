@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using Selenium.Axe;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -29,10 +30,12 @@ namespace SingleTest.Helpers
     internal class CaptureHelpers
     {
         IWebDriver _driver;
+        AxeBuilder _axeBuilder;
 
         internal CaptureHelpers(IWebDriver driver)
         {
             _driver = driver;
+            _axeBuilder = new AxeBuilder(_driver).DisableRules("color-contrast");
         }
 
         internal void CaptureDropDown(string elementID, string visibleValue)
@@ -78,6 +81,15 @@ namespace SingleTest.Helpers
             IWebElement element = _driver.FindElement(Helpers.FindElementByDataTestID(elementID));
             return element.Text;
 
+        }
+
+        internal bool CheckNoAccessibilityIssues()
+        {
+            AxeResult axeResult = _axeBuilder.Analyze();
+
+            bool res = (axeResult.Violations.Length == 0);
+
+            return res;
         }
     }
 

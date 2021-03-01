@@ -35,6 +35,25 @@ namespace BrowserStack
         }
 
         [Test]
+        public void StartToDashboardWithAccessibility()
+        {
+            //Go to Dev URL
+            driver.Url = SSStartURL;
+
+            CaptureHelpers _CaptureHelper = new CaptureHelpers(driver);
+
+            AboutYou _aboutYou = new AboutYou(_CaptureHelper);
+            _aboutYou.ValidateAccessibility();
+            _aboutYou.ValidateTitle();
+            _aboutYou.CaptureData();
+            _aboutYou.Submit();
+
+            AccountRegistration _accountRegistration = new AccountRegistration(_CaptureHelper);
+            _accountRegistration.ValidateTitle();
+            _accountRegistration.ClickSkipAccountRegistration();
+        }
+
+        [Test]
         public void SelfEmployedNotEligible()
         {
             //Go to Dev URL

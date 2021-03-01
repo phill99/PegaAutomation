@@ -32,5 +32,10 @@ namespace SingleTest.Helpers
             CaptureHelper.ClickButton("201806251335470614103160");
             Thread.Sleep(12000);
         }
+
+        public override void ValidateAccessibility()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

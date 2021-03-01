@@ -95,5 +95,11 @@ namespace SingleTest.Helpers
             CaptureHelper.ClickButton("20150213063700071316413");
             Thread.Sleep(3000);
         }
+
+        public override void ValidateAccessibility()
+        {
+            bool output = CaptureHelper.CheckNoAccessibilityIssues();
+            Assert.IsTrue(output);
+        }
     }
 }
